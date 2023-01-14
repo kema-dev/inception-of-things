@@ -1,0 +1,23 @@
+# Create a kubernetes manifest for a static website
+
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: p2-app
+  labels:
+    app: p2-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: p2-app
+  template:
+    metadata:
+      labels:
+        app: p2-app
+    spec:
+      containers:
+        - name: p2-app
+          image: klakegg/hugo
+          ports:
+            - containerPort: 80
